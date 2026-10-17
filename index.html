@@ -1,490 +1,72 @@
 <!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff1f7">
-<title>Creaciones Yazmin | Catálogo</title>
-<style>
-:root{--pink:#e94f91;--pink-dark:#a72f68;--lilac:#c8b5f3;--yellow:#ffe7a0;--ink:#332638;--muted:#796c7b;--bg:#fff9fc;--line:#f0dce8;--green:#16834b}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.wrap{max-width:1120px;margin:auto;padding:0 16px}
-.top{position:sticky;top:0;z-index:5;background:#fff9fcf2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.head{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px}
-.brand{font-family:Georgia,serif;color:var(--pink-dark);font-size:23px;font-style:italic;font-weight:700;line-height:1}
-.brand small{display:block;font:9px system-ui;letter-spacing:2px;text-align:center;margin-top:5px;color:#8f5c7d}
-.iconbtn{border:1px solid var(--line);background:white;border-radius:14px;padding:9px 12px;color:var(--pink-dark)}
-.search{display:flex;gap:8px;padding-bottom:12px}
-.search input{width:100%;border:1px solid var(--line);border-radius:22px;padding:12px 16px;background:white;outline-color:var(--pink)}
-.hero{margin:18px 0 20px;border-radius:24px;overflow:hidden;position:relative;min-height:220px;background:linear-gradient(115deg,#fbd4e8,#e9dcff 65%,#fff0b7);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:24px;gap:12px}
-.hero:after{content:'🎀';font-size:115px;text-align:center;filter:drop-shadow(0 10px 10px #a34c6b33)}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#92517b;font-weight:800}
-.hero h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,42px);line-height:1.04;margin:9px 0;color:#77315e}
-.hero p{font-size:13px;line-height:1.5;color:#79536f}
-.btn{border:0;background:var(--pink);color:white;border-radius:13px;padding:11px 15px;font-weight:750;box-shadow:0 5px 12px #e94f9129}
-.btn.secondary{background:white;color:var(--pink-dark);border:1px solid var(--line);box-shadow:none}
-.dots{display:flex;gap:5px;margin-top:13px}
-.dot{width:7px;height:7px;border-radius:50%;background:#d6b6cc}
-.dot.active{background:var(--pink);width:20px;border-radius:8px}
-.section{margin:25px 0}
-.secthead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:12px}
-.secthead h2{margin:0;font-size:20px}
-.secthead p{margin:4px 0 0;color:var(--muted);font-size:12px}
-.textbtn{border:0;background:none;color:var(--pink-dark);font-weight:750}
-.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.cat{border:1px solid var(--line);border-radius:17px;background:white;padding:13px 6px;text-align:center;box-shadow:0 4px 12px #54233a06;color:var(--ink)}
-.cat .emoji{width:45px;height:45px;margin:0 auto 7px;display:grid;place-items:center;border-radius:50%;font-size:24px;background:linear-gradient(135deg,#ffe0ed,#eee4ff)}
-.cat b{display:block;font-size:11px}
-.cat.active{border-color:var(--pink);background:#fff0f7}
-.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}
-.chip{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:20px;padding:8px 13px;color:#745b70;font-size:12px}
-.chip.active{background:var(--pink);color:white;border-color:var(--pink)}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.product{border:1px solid var(--line);background:white;border-radius:18px;overflow:hidden;min-width:0;box-shadow:0 5px 16px #5a2b4008}
-.photo{height:150px;display:grid;place-items:center;font-size:72px;position:relative;background:linear-gradient(145deg,#ffe1ee,#fff1c9)}
-.photo.p2{background:linear-gradient(145deg,#e7dcff,#fce5f3)}
-.photo.p3{background:linear-gradient(145deg,#fff0c8,#ffd9e7)}
-.photo.p4{background:linear-gradient(145deg,#f6d9ec,#e1f2ff)}
-.heart{position:absolute;right:8px;top:8px;border:0;background:#ffffffd9;border-radius:50%;width:30px;height:30px;color:var(--pink-dark);font-size:18px}
-.prodinfo{padding:11px}
-.prodinfo h3{font-size:13px;margin:0 0 5px}
-.prodinfo p{font-size:11px;color:var(--muted);margin:0 0 9px;min-height:28px}
-.price{font-size:17px;font-weight:850;color:var(--pink-dark);margin-bottom:9px}
-.add{width:100%;border:0;border-radius:10px;padding:9px;background:#ffe4f0;color:#9e2f67;font-weight:800;font-size:12px}
-.add:hover{background:#fbd0e4}
-.banner{border-radius:20px;background:linear-gradient(100deg,#f5eaff,#ffe4ef);padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.banner h3{margin:0 0 5px;font-family:Georgia,serif;color:#77315e}
-.banner p{font-size:12px;margin:0;color:#76576f}
-.banner .bow{font-size:48px}
-.bottomnav{position:sticky;bottom:0;background:#fffdfef2;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:6}
-.navitem{border:0;background:none;color:#927b8e;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:3px 8px}
-.navitem span{font-size:20px}
-.navitem.active{color:var(--pink-dark);font-weight:800}
-.badge{background:var(--pink);color:white;border-radius:10px;font-size:10px;padding:2px 6px;margin-left:3px}
-.view{display:none}
-.view.active{display:block}
-.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:16px 0}
-.field{display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;margin:6px 0 12px;background:white}
-.muted{color:var(--muted);font-size:12px;line-height:1.5}
-.cartrow,.orderrow{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
-.mini{width:54px;height:54px;border-radius:12px;background:#ffebf4;display:grid;place-items:center;font-size:28px;flex-shrink:0}
-.grow{flex:1;min-width:0}
-.grow b{font-size:13px}
-.qty{display:flex;align-items:center;gap:10px}
-.qty button{border:1px solid var(--line);background:white;border-radius:8px;padding:3px 9px}
-.total{display:flex;justify-content:space-between;font-size:18px;font-weight:850;margin:15px 0}
-.notice{padding:11px;border-radius:12px;background:#fff4d4;color:#74551c;font-size:12px;line-height:1.5}
-.footer{text-align:center;color:#9b8495;font-size:11px;padding:22px 10px 90px}
-.profile-head{display:flex;align-items:center;gap:14px;padding:16px;border-radius:18px;background:linear-gradient(120deg,#ffe0ee,#eee5ff);margin:16px 0}
-.profile-avatar{width:60px;height:60px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;background:white;font-size:30px}
-.profile-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
-.profile-tab{padding:11px 4px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--pink-dark);font-size:12px;font-weight:750}
-.profile-tab.active{background:var(--pink);color:white;border-color:var(--pink)}
-.profile-section{display:none}
-.profile-section.active{display:block}
-@media(min-width:700px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}.photo{height:190px}.hero{min-height:290px}.cats{grid-template-columns:repeat(8,1fr)}}
-@media(max-width:370px){.cats{grid-template-columns:repeat(2,1fr)}.hero{padding:17px}.hero:after{font-size:76px}.photo{height:125px}.profile-tab{font-size:11px}}
-</style>
-</head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <div class="head">
-      <button class="iconbtn" aria-label="Abrir menú" onclick="showView('menu')">☰</button>
-      <div class="brand">Creaciones Yazmin<small>MOÑOS QUE HACEN SONREÍR</small></div>
-      <button class="iconbtn" onclick="showView('cart')" aria-label="Carrito">🛍️ <span id="cartCount" class="badge">0</span></button>
-    </div>
-    <div class="search"><input id="search" placeholder="🔎 ¿Qué moño estás buscando?" oninput="renderProducts()"></div>
-  </div>
-</header>
-<main class="wrap">
-  <section id="home" class="view active">
-    <div class="hero">
-      <div><div class="eyebrow" id="heroEyebrow">Nueva colección</div><h1 id="heroTitle">Colección de personajes</h1><p id="heroText">Detalles llenos de color para cada ocasión especial.</p><button class="btn" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">Ver colección →</button><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div></div>
-    </div>
-    <section class="section">
-      <div class="secthead"><div><h2>Explora categorías</h2><p>Encuentra tu estilo favorito</p></div><button class="textbtn" onclick="showView('categories')">Ver todas</button></div>
-      <div class="cats" id="homeCats"></div>
-    </section>
-    <section class="section" id="productsSection">
-      <div class="secthead"><div><h2>Productos destacados</h2><p>Diseñados con cariño 🎀</p></div></div>
-      <div class="filters" id="filters"></div><div class="products" id="products"></div>
-    </section>
-    <div class="banner section"><div><h3>Tu moño, tu estilo</h3><p>Personaliza colores y agrega un nombre.</p><button class="btn secondary" onclick="showView('catalogView')" style="margin-top:10px">Descubrir diseños</button></div><div class="bow">🎀✨</div></div>
-  </section>
 
-  <section id="categories" class="view">
-    <div class="section"><div class="secthead"><div><h2>Todas las categorías</h2><p>Elige una para ver los diseños</p></div></div><div class="cats" id="allCats"></div></div>
-  </section>
-
-  <section id="catalogView" class="view">
-    <div class="section"><div class="secthead"><div><h2>Catálogo</h2><p>Agrega tus favoritos al carrito</p></div></div><div class="filters" id="filters2"></div><div class="products" id="products2"></div></div>
-  </section>
-
-  <section id="cart" class="view">
-    <div class="section">
-      <h2>🛍️ Tu carrito</h2><p class="muted">Revisa los moños antes de preparar tu pedido.</p>
-      <div class="panel" id="cartItems"></div>
-      <div class="panel">
-        <label>Tu nombre<input id="customerName" class="field" placeholder="Nombre completo"></label>
-        <label>Teléfono de contacto<input id="customerPhone" class="field" inputmode="tel" placeholder="Tu número de teléfono"></label>
-        <label>Personalización o notas<textarea id="customerNotes" class="field" placeholder="Colores, nombres, indicaciones..." rows="3"></textarea></label>
-        <label>Entrega<select id="delivery" class="field"><option>Por confirmar</option><option>Entrega local</option><option>Envío por paquetería</option></select></label>
-        <div class="total"><span>Total estimado</span><span id="cartTotal">$0 MXN</span></div>
-        <button class="btn" style="width:100%" onclick="checkout()">💬 Preparar pedido por WhatsApp</button>
-        <p class="muted">Se abrirá WhatsApp con el resumen. El pedido solo queda enviado cuando tú mandas el mensaje.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="account" class="view">
-    <div class="section">
-      <h2>Mi cuenta 🎀</h2>
-      <div class="panel" id="authPanel">
-        <h3 id="authHeading">Crear cuenta o iniciar sesión</h3>
-        <p class="muted" id="authStatus">Regístrate para guardar tus datos y consultar tus pedidos.</p>
-        <label id="registerNameLabel">Nombre completo<input id="accountName" class="field" autocomplete="name" placeholder="Tu nombre"></label>
-        <label id="registerPhoneLabel">Teléfono<input id="accountPhone" class="field" inputmode="tel" placeholder="Tu número de contacto"></label>
-        <label>Correo electrónico<input id="accountEmail" class="field" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
-        <label>Contraseña<input id="accountPassword" class="field" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></label>
-        <button class="btn" id="authMainBtn" style="width:100%" onclick="registerOrLogin()">Crear cuenta</button>
-        <button class="textbtn" id="authToggle" style="margin-top:12px" onclick="toggleAuthMode()">Ya tengo cuenta · Iniciar sesión</button>
-      </div>
-
-      <div id="profilePanel" style="display:none">
-        <div class="profile-head"><div class="profile-avatar">🎀</div><div><h3 id="profileName" style="margin:0 0 5px">Mi perfil</h3><p class="muted" id="profileEmail" style="margin:0"></p></div></div>
-        <div class="profile-tabs">
-          <button class="profile-tab active" onclick="showProfileSection('datos',this)">👤 Mis datos</button>
-          <button class="profile-tab" onclick="showProfileSection('pedidos',this)">📦 Mis pedidos</button>
-          <button class="profile-tab" onclick="showProfileSection('favoritos',this)">❤️ Favoritos</button>
-        </div>
-        <div id="profile-datos" class="profile-section active">
-          <div class="panel">
-            <h3>Mis datos personales</h3>
-            <label>Nombre completo<input id="editName" class="field" autocomplete="name" placeholder="Tu nombre"></label>
-            <label>Teléfono<input id="editPhone" class="field" inputmode="tel" placeholder="Tu teléfono"></label>
-            <label>Correo electrónico<input id="editEmail" class="field" type="email" disabled></label>
-            <button class="btn" style="width:100%" onclick="saveProfile()">Guardar cambios</button>
-          </div>
-        </div>
-        <div id="profile-pedidos" class="profile-section">
-          <div class="panel"><h3>Mi historial de pedidos</h3><div id="history"><p class="muted">Cargando pedidos…</p></div></div>
-        </div>
-        <div id="profile-favoritos" class="profile-section">
-          <div class="panel"><h3>Mis moños favoritos ❤️</h3><p class="muted">Aquí encontrarás los diseños que guardes con el corazón.</p><div id="favoritesList" class="products"></div></div>
-        </div>
-        <button class="btn secondary" style="width:100%;margin:12px 0" onclick="logout()">Cerrar sesión</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="menu" class="view">
-    <div class="section"><h2>Menú</h2><div class="panel">
-      <button class="textbtn" onclick="showView('home')">⌂ Inicio</button><hr style="border:0;border-top:1px solid var(--line)">
-      <button class="textbtn" onclick="showView('categories')">🎀 Categorías</button><hr style="border:0;border-top:1px solid var(--line)">
-      <button class="textbtn" onclick="showView('catalogView')">🛍️ Catálogo</button><hr style="border:0;border-top:1px solid var(--line)">
-      <button class="textbtn" onclick="showView('account')">👤 Mi perfil e historial</button>
-    </div></div>
-  </section>
-</main>
-
-<nav class="bottomnav">
-  <button class="navitem active" data-view="home" onclick="showView('home')"><span>⌂</span>Inicio</button>
-  <button class="navitem" data-view="categories" onclick="showView('categories')"><span>☷</span>Categorías</button>
-  <button class="navitem" data-view="cart" onclick="showView('cart')"><span>🛒</span>Carrito</button>
-  <button class="navitem" data-view="account" onclick="showView('account')"><span>♙</span>Cuenta</button>
-</nav>
-<div class="footer">Creaciones Yazmin · Diseños hechos con cariño<br>Precios e imágenes de muestra; reemplázalos por los productos reales.</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBvn_ML8ajShf9F002XuALsKJOgDZU0BoM",
-  authDomain: "creaciones-yazmin-catalogo.firebaseapp.com",
-  projectId: "creaciones-yazmin-catalogo",
-  storageBucket: "creaciones-yazmin-catalogo.firebasestorage.app",
-  messagingSenderId: "1076672530266",
-  appId: "1:1076672530266:web:861949973812338dbcd563",
-  measurementId: "G-Q3D435NMW4"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-const WHATSAPP_NUMBER = '525644275718';
-const cats = [['Todos','✨'],['Escolares','🎀'],['Personajes','🐭'],['Diademas','🌸'],['Personalizados','💗'],['Bebés','🧸'],['Temporada','🎃'],['Novedades','🌟'],['Ofertas','💝']];
-const productsData = [
-{id:1,name:'Moño Minnie',category:'Personajes',price:130,emoji:'🎀',desc:'Rojo y negro, lleno de encanto.',bg:'p2'},
-{id:2,name:'Moño Arcoíris',category:'Escolares',price:125,emoji:'🌈',desc:'Colores alegres para todos los días.',bg:'p3'},
-{id:3,name:'Moño Escolar Clásico',category:'Escolares',price:90,emoji:'💜',desc:'Un básico bonito y combinable.',bg:'p2'},
-{id:4,name:'Moño Princesa',category:'Personajes',price:125,emoji:'👑',desc:'Un diseño especial para brillar.',bg:'p4'},
-{id:5,name:'Diadema Floral',category:'Diademas',price:115,emoji:'🌸',desc:'Flores y tonos delicados.',bg:'p3'},
-{id:6,name:'Moño Personalizado',category:'Personalizados',price:140,emoji:'🎀',desc:'Agrega un nombre y elige colores.',bg:''},
-{id:7,name:'Moño Bebé',category:'Bebés',price:85,emoji:'🩷',desc:'Suave, dulce y delicado.',bg:'p4'},
-{id:8,name:'Moño de Temporada',category:'Temporada',price:120,emoji:'🎃',desc:'Diseños para fechas especiales.',bg:'p3'}
-];
-let selected = 'Todos';
-let cart = JSON.parse(localStorage.getItem('cy_cart') || '[]');
-let slide = 0;
-let authMode = 'register';
-let favoriteIds = [];
-
-const money = n => new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);
-
-function renderCats(){
-  const html = cats.slice(1).map(([n,e])=>`<button class="cat" onclick="chooseCat('${n}')"><span class="emoji">${e}</span><b>${n}</b></button>`).join('');
-  document.getElementById('homeCats').innerHTML = html;
-  document.getElementById('allCats').innerHTML = `<button class="cat" onclick="chooseCat('Todos')"><span class="emoji">✨</span><b>Todos</b></button>` + html;
-}
-function renderFilters(id){
-  document.getElementById(id).innerHTML = cats.map(([n])=>`<button class="chip ${selected===n?'active':''}" onclick="chooseCat('${n}')">${n}</button>`).join('');
-}
-function renderProducts(){
-  const q = (document.getElementById('search')?.value || '').toLowerCase();
-  const list = productsData.filter(p=>(selected==='Todos'||p.category===selected)&&(`${p.name} ${p.category} ${p.desc}`).toLowerCase().includes(q));
-  const html = list.map(p=>`<article class="product"><div class="photo ${p.bg}">${p.emoji}<button class="heart" aria-label="Guardar favorito" onclick="toggleFavorite(${p.id})">${favoriteIds.includes(p.id)?'♥':'♡'}</button></div><div class="prodinfo"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><button class="add" onclick="addToCart(${p.id})">＋ Agregar</button></div></article>`).join('') || '<p class="muted">No encontramos productos en esta búsqueda.</p>';
-  document.getElementById('products').innerHTML = html;
-  document.getElementById('products2').innerHTML = html;
-  renderFilters('filters');
-  renderFilters('filters2');
-}
-function chooseCat(c){selected=c;renderProducts();showView('catalogView');window.scrollTo({top:0,behavior:'smooth'});}
-function showView(id){
-  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
-  document.querySelectorAll('.navitem').forEach(v=>v.classList.toggle('active',v.dataset.view===id));
-  if(id==='cart')renderCart();
-  if(id==='account' && auth.currentUser)loadProfile(auth.currentUser).catch(console.error);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function addToCart(id){
-  const p=productsData.find(x=>x.id===id),found=cart.find(x=>x.id===id);
-  if(found)found.qty++;else cart.push({...p,qty:1});
-  saveCart();renderCart();
-}
-function saveCart(){
-  localStorage.setItem('cy_cart',JSON.stringify(cart));
-  document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);
-}
-function changeQty(id,d){
-  const item=cart.find(x=>x.id===id);
-  if(item)item.qty+=d;
-  cart=cart.filter(x=>x.qty>0);
-  saveCart();renderCart();
-}
-function renderCart(){
-  const el=document.getElementById('cartItems');
-  if(!cart.length){
-    el.innerHTML='<p>Tu carrito está vacío 🎀</p><button class="btn secondary" onclick="showView('catalogView')">Ver catálogo</button>';
-  }else{
-    el.innerHTML=cart.map(p=>`<div class="cartrow"><div class="mini">${p.emoji}</div><div class="grow"><b>${p.name}</b><div class="muted">${money(p.price)} c/u</div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button>${p.qty}<button onclick="changeQty(${p.id},1)">＋</button></div></div><b>${money(p.price*p.qty)}</b></div>`).join('');
-  }
-  document.getElementById('cartTotal').textContent=money(cart.reduce((s,p)=>s+p.price*p.qty,0));
-}
-async function checkout(){
-  if(!cart.length){alert('Agrega al menos un producto al carrito.');return;}
-  const user=auth.currentUser;
-  if(!user){alert('Primero crea tu cuenta o inicia sesión en Mi cuenta para guardar el pedido y su historial.');showView('account');return;}
-  const name=(document.getElementById('customerName').value.trim()||document.getElementById('editName').value.trim());
-  const phone=(document.getElementById('customerPhone').value.trim()||document.getElementById('editPhone').value.trim());
-  const notes=document.getElementById('customerNotes').value.trim();
-  const delivery=document.getElementById('delivery').value;
-  if(!name||!phone){alert('Escribe tu nombre y teléfono de contacto en el carrito o en Mi perfil.');return;}
-  const total=cart.reduce((s,p)=>s+p.price*p.qty,0);
-  const items=cart.map(p=>({productId:p.id,name:p.name,price:p.price,quantity:p.qty,subtotal:p.price*p.qty}));
-  const msg=`🌸 *NUEVO PEDIDO — CREACIONES YAZMIN*\n\n*Cliente:* ${name}\n*Teléfono:* ${phone}\n*Correo:* ${user.email||'No indicado'}\n\n*Productos:*\n${cart.map(p=>`• ${p.name} x${p.qty} — ${money(p.price*p.qty)}`).join('\n')}\n\n*Total estimado:* ${money(total)}\n*Entrega:* ${delivery}\n*Notas:* ${notes||'Sin notas'}\n*Pedido guardado en el historial de la web.*\n\nPor favor, confirmar disponibilidad y entrega.`;
-  try{
-    await db.collection('pedidos').add({
-      clienteId:user.uid,clienteNombre:name,telefono:phone,correo:user.email||'',
-      productos:items,total,entrega:delivery,notas:notes,estado:'pendiente',
-      creadoEn:firebase.firestore.FieldValue.serverTimestamp()
-    });
-    await db.collection('clientes').doc(user.uid).set({
-      nombre:name,telefono:phone,correo:user.email||'',
-      actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()
-    },{merge:true});
-    alert('¡Pedido guardado en tu historial! Ahora se abrirá WhatsApp. Recuerda pulsar Enviar en WhatsApp.');
-    window.location.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-    cart=[];saveCart();renderCart();
-  }catch(e){
-    console.error(e);
-    alert('No pudimos guardar el pedido. Revisa tu conexión y las reglas de Firestore; no se abrió WhatsApp para evitar perder el pedido.');
-  }
-}
-
-function toggleAuthMode(){
-  authMode=authMode==='register'?'login':'register';
-  document.getElementById('authHeading').textContent=authMode==='register'?'Crear cuenta o iniciar sesión':'Iniciar sesión';
-  document.getElementById('authMainBtn').textContent=authMode==='register'?'Crear cuenta':'Iniciar sesión';
-  document.getElementById('authToggle').textContent=authMode==='register'?'Ya tengo cuenta · Iniciar sesión':'Soy nuevo · Crear cuenta';
-  document.getElementById('registerNameLabel').style.display=authMode==='register'?'block':'none';
-  document.getElementById('registerPhoneLabel').style.display=authMode==='register'?'block':'none';
-}
-async function registerOrLogin(){
-  const email=document.getElementById('accountEmail').value.trim();
-  const password=document.getElementById('accountPassword').value;
-  const name=document.getElementById('accountName').value.trim();
-  const phone=document.getElementById('accountPhone').value.trim();
-  if(!email||password.length<6){alert('Escribe tu correo y una contraseña de al menos 6 caracteres.');return;}
-  try{
-    let credential;
-    if(authMode==='register'){
-      if(!name||!phone){alert('Completa tu nombre y teléfono.');return;}
-      credential=await auth.createUserWithEmailAndPassword(email,password);
-      await db.collection('clientes').doc(credential.user.uid).set({
-        nombre:name,telefono:phone,correo:email,
-        favoritos:[],creadoEn:firebase.firestore.FieldValue.serverTimestamp()
-      });
-    }else{
-      credential=await auth.signInWithEmailAndPassword(email,password);
-    }
-    await loadProfile(credential.user);
-    alert(authMode==='register'?'¡Cuenta creada! Tu perfil está listo.':'¡Bienvenido de nuevo!');
-  }catch(e){
-    console.error(e);
-    alert('No se pudo completar: '+(e.message||'revisa los datos y Firebase Authentication.'));
-  }
-}
-async function logout(){
-  await auth.signOut();
-  favoriteIds=[];
-  document.getElementById('authPanel').style.display='block';
-  document.getElementById('profilePanel').style.display='none';
-  document.getElementById('authStatus').textContent='Regístrate para guardar tus datos y consultar tus pedidos.';
-  document.getElementById('accountPassword').value='';
-  renderProducts();
-  showView('account');
-}
-async function loadProfile(user){
-  const doc=await db.collection('clientes').doc(user.uid).get();
-  const data=doc.exists?doc.data():{};
-  favoriteIds=Array.isArray(data.favoritos)?data.favoritos.filter(id=>productsData.some(p=>p.id===id)):[];
-  document.getElementById('authPanel').style.display='none';
-  document.getElementById('profilePanel').style.display='block';
-  document.getElementById('profileName').textContent=data.nombre||'Mi perfil';
-  document.getElementById('profileEmail').textContent=user.email||'';
-  document.getElementById('editName').value=data.nombre||'';
-  document.getElementById('editPhone').value=data.telefono||'';
-  document.getElementById('editEmail').value=user.email||'';
-  document.getElementById('accountName').value=data.nombre||'';
-  document.getElementById('accountPhone').value=data.telefono||'';
-  document.getElementById('customerName').value=data.nombre||'';
-  document.getElementById('customerPhone').value=data.telefono||'';
-  renderProducts();
-  renderFavorites();
-  loadHistory();
-}
-function showProfileSection(section,button){
-  document.querySelectorAll('.profile-section').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.profile-tab').forEach(el=>el.classList.remove('active'));
-  document.getElementById('profile-'+section).classList.add('active');
-  button.classList.add('active');
-  if(section==='favoritos')renderFavorites();
-  if(section==='pedidos')loadHistory();
-}
-async function saveProfile(){
-  const user=auth.currentUser;
-  if(!user)return alert('Inicia sesión primero.');
-  const nombre=document.getElementById('editName').value.trim();
-  const telefono=document.getElementById('editPhone').value.trim();
-  if(!nombre||!telefono)return alert('Escribe tu nombre y teléfono.');
-  try{
-    await db.collection('clientes').doc(user.uid).set({
-      nombre,telefono,correo:user.email||'',
-      actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()
-    },{merge:true});
-    document.getElementById('profileName').textContent=nombre;
-    document.getElementById('accountName').value=nombre;
-    document.getElementById('accountPhone').value=telefono;
-    document.getElementById('customerName').value=nombre;
-    document.getElementById('customerPhone').value=telefono;
-    alert('¡Tus datos se guardaron correctamente!');
-  }catch(e){
-    console.error(e);
-    alert('No se pudieron guardar tus datos. Inténtalo de nuevo.');
-  }
-}
-async function toggleFavorite(id){
-  const user=auth.currentUser;
-  if(!user){alert('Inicia sesión para guardar tus favoritos.');showView('account');return;}
-  const product=productsData.find(p=>p.id===id);
-  if(!product)return;
-  const oldIds=[...favoriteIds];
-  favoriteIds=favoriteIds.includes(id)?favoriteIds.filter(x=>x!==id):[...favoriteIds,id];
-  renderProducts();
-  try{
-    await db.collection('clientes').doc(user.uid).set({
-      favoritos:favoriteIds,
-      actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()
-    },{merge:true});
-    renderFavorites();
-  }catch(e){
-    console.error(e);
-    favoriteIds=oldIds;
-    renderProducts();
-    alert('No se pudo guardar el favorito. Revisa tu conexión y las reglas de Firestore.');
-  }
-}
-function renderFavorites(){
-  const el=document.getElementById('favoritesList');
-  if(!el)return;
-  const favorites=productsData.filter(p=>favoriteIds.includes(p.id));
-  if(!favorites.length){
-    el.innerHTML='<p class="muted">Todavía no tienes favoritos. Toca el corazón de un moño para guardarlo.</p>';
-    return;
-  }
-  el.innerHTML=favorites.map(p=>`<article class="product"><div class="photo ${p.bg}">${p.emoji}</div><div class="prodinfo"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><button class="add" onclick="addToCart(${p.id})">＋ Agregar al carrito</button><button class="textbtn" style="width:100%;margin-top:8px" onclick="toggleFavorite(${p.id})">♥ Quitar de favoritos</button></div></article>`).join('');
-}
-async function loadHistory(){
-  const user=auth.currentUser,el=document.getElementById('history');
-  if(!user){el.innerHTML='<p class="muted">Inicia sesión para consultar tu historial.</p>';return;}
-  el.innerHTML='<p class="muted">Cargando pedidos…</p>';
-  try{
-    const snap=await db.collection('pedidos').where('clienteId','==',user.uid).get();
-    if(snap.empty){el.innerHTML='<p class="muted">Todavía no tienes pedidos.</p>';return;}
-    const orders=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creadoEn?.seconds||0)-(a.creadoEn?.seconds||0));
-    el.innerHTML=orders.map(o=>`<div class="orderrow"><div class="mini">🎀</div><div class="grow"><b>Pedido ${o.id.slice(0,7).toUpperCase()}</b><div class="muted">${(o.productos||[]).map(p=>`${p.name} ×${p.quantity}`).join(', ')}</div><div class="muted">Estado: ${o.estado||'pendiente'}</div></div><b>${money(o.total||0)}</b></div>`).join('');
-  }catch(e){
-    console.error(e);
-    el.innerHTML='<p class="muted">No se pudo cargar el historial. Revisa las reglas de Firestore.</p>';
-  }
-}
-
-const slides=[
-  ['Nueva colección','Colección de personajes','Detalles llenos de color para cada ocasión especial.'],
-  ['Diseños personalizados','Tu moño, tu estilo','Agrega nombres, combina colores y crea un detalle único.'],
-  ['Hechos con cariño','Pequeños detalles, grandes sonrisas','Descubre diseños para regalar y celebrar.']
-];
-function nextSlide(){
-  slide=(slide+1)%slides.length;
-  const s=slides[slide];
-  document.getElementById('heroEyebrow').textContent=s[0];
-  document.getElementById('heroTitle').textContent=s[1];
-  document.getElementById('heroText').textContent=s[2];
-  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===slide));
-}
-setInterval(nextSlide,5500);
-renderCats();
-renderProducts();
-saveCart();
-renderCart();
-
-auth.onAuthStateChanged(async user=>{
-  if(user){
-    try{await loadProfile(user);}
-    catch(e){console.error(e);document.getElementById('authStatus').textContent='No se pudo cargar el perfil. Intenta recargar la página.';}
-  }else{
-    favoriteIds=[];
-    document.getElementById('authPanel').style.display='block';
-    document.getElementById('profilePanel').style.display='none';
-    document.getElementById('authMainBtn').style.display='block';
-    document.getElementById('authToggle').style.display='inline-block';
-    renderProducts();
-  }
-});
-</script>
-</body>
-</html>
+<html lang="es">  
+<head>  
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fff1f7">  
+<title>Creaciones Yazmin | Catálogo</title>  
+<style>  
+:root{--pink:#e94f91;--pink-dark:#a72f68;--lilac:#c8b5f3;--yellow:#ffe7a0;--ink:#332638;--muted:#796c7b;--bg:#fff9fc;--line:#f0dce8;--green:#16834b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:0 16px}.top{position:sticky;top:0;z-index:5;background:#fff9fcf2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.head{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px}.brand{font-family:Georgia,serif;color:var(--pink-dark);font-size:23px;font-style:italic;font-weight:700;line-height:1}.brand small{display:block;font:9px system-ui;letter-spacing:2px;text-align:center;margin-top:5px;color:#8f5c7d}.iconbtn{border:1px solid var(--line);background:white;border-radius:14px;padding:9px 12px;color:var(--pink-dark)}.search{display:flex;gap:8px;padding-bottom:12px}.search input{width:100%;border:1px solid var(--line);border-radius:22px;padding:12px 16px;background:white;outline-color:var(--pink)}.hero{margin:18px 0 20px;border-radius:24px;overflow:hidden;position:relative;min-height:220px;background:linear-gradient(115deg,#fbd4e8,#e9dcff 65%,#fff0b7);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:24px;gap:12px}.hero:after{content:'🎀';font-size:115px;text-align:center;filter:drop-shadow(0 10px 10px #a34c6b33)}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#92517b;font-weight:800}.hero h1{font-family:Georgia,serif;font-size:clamp(27px,5vw,42px);line-height:1.04;margin:9px 0;color:#77315e}.hero p{font-size:13px;line-height:1.5;color:#79536f}.btn{border:0;background:var(--pink);color:white;border-radius:13px;padding:11px 15px;font-weight:750;box-shadow:0 5px 12px #e94f9129}.btn.secondary{background:white;color:var(--pink-dark);border:1px solid var(--line);box-shadow:none}.dots{display:flex;gap:5px;margin-top:13px}.dot{width:7px;height:7px;border-radius:50%;background:#d6b6cc}.dot.active{background:var(--pink);width:20px;border-radius:8px}.section{margin:25px 0}.secthead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:12px}.secthead h2{margin:0;font-size:20px}.secthead p{margin:4px 0 0;color:var(--muted);font-size:12px}.textbtn{border:0;background:none;color:var(--pink-dark);font-weight:750}.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cat{border:1px solid var(--line);border-radius:17px;background:white;padding:13px 6px;text-align:center;box-shadow:0 4px 12px #54233a06;color:var(--ink)}.cat .emoji{width:45px;height:45px;margin:0 auto 7px;display:grid;place-items:center;border-radius:50%;font-size:24px;background:linear-gradient(135deg,#ffe0ed,#eee4ff)}.cat b{display:block;font-size:11px}.cat.active{border-color:var(--pink);background:#fff0f7}.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}.chip{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:20px;padding:8px 13px;color:#745b70;font-size:12px}.chip.active{background:var(--pink);color:white;border-color:var(--pink)}.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{border:1px solid var(--line);background:white;border-radius:18px;overflow:hidden;min-width:0;box-shadow:0 5px 16px #5a2b4008}.photo{height:150px;display:grid;place-items:center;font-size:72px;position:relative;background:linear-gradient(145deg,#ffe1ee,#fff1c9)}.photo.p2{background:linear-gradient(145deg,#e7dcff,#fce5f3)}.photo.p3{background:linear-gradient(145deg,#fff0c8,#ffd9e7)}.photo.p4{background:linear-gradient(145deg,#f6d9ec,#e1f2ff)}.heart{position:absolute;right:8px;top:8px;border:0;background:#ffffffd9;border-radius:50%;width:30px;height:30px;color:var(--pink-dark)}.prodinfo{padding:11px}.prodinfo h3{font-size:13px;margin:0 0 5px}.prodinfo p{font-size:11px;color:var(--muted);margin:0 0 9px;min-height:28px}.price{font-size:17px;font-weight:850;color:var(--pink-dark);margin-bottom:9px}.add{width:100%;border:0;border-radius:10px;padding:9px;background:#ffe4f0;color:#9e2f67;font-weight:800;font-size:12px}.add:hover{background:#fbd0e4}.banner{border-radius:20px;background:linear-gradient(100deg,#f5eaff,#ffe4ef);padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.banner h3{margin:0 0 5px;font-family:Georgia,serif;color:#77315e}.banner p{font-size:12px;margin:0;color:#76576f}.banner .bow{font-size:48px}.bottomnav{position:sticky;bottom:0;background:#fffdfef2;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:6}.navitem{border:0;background:none;color:#927b8e;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:3px 8px}.navitem span{font-size:20px}.navitem.active{color:var(--pink-dark);font-weight:800}.badge{background:var(--pink);color:white;border-radius:10px;font-size:10px;padding:2px 6px;margin-left:3px}.view{display:none}.view.active{display:block}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:16px 0}.field{display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;margin:6px 0 12px;background:white}.muted{color:var(--muted);font-size:12px;line-height:1.5}.cartrow,.orderrow{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.mini{width:54px;height:54px;border-radius:12px;background:#ffebf4;display:grid;place-items:center;font-size:28px}.grow{flex:1;min-width:0}.grow b{font-size:13px}.qty{display:flex;align-items:center;gap:10px}.qty button{border:1px solid var(--line);background:white;border-radius:8px;padding:3px 9px}.total{display:flex;justify-content:space-between;font-size:18px;font-weight:850;margin:15px 0}.notice{padding:11px;border-radius:12px;background:#fff4d4;color:#74551c;font-size:12px;line-height:1.5}.footer{text-align:center;color:#9b8495;font-size:11px;padding:22px 10px 90px}  
+@media(min-width:700px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}.photo{height:190px}.hero{min-height:290px}.cats{grid-template-columns:repeat(8,1fr)}}@media(max-width:370px){.cats{grid-template-columns:repeat(2,1fr)}.hero{padding:17px}.hero:after{font-size:76px}.photo{height:125px}}  
+</style></head>  
+<body>  
+<header class="top"><div class="wrap"><div class="head"><button class="iconbtn" aria-label="Abrir menú" onclick="showView('menu')">☰</button><div class="brand">Creaciones Yazmin<small>MOÑOS QUE HACEN SONREÍR</small></div><button class="iconbtn" onclick="showView('cart')" aria-label="Carrito">🛍️ <span id="cartCount" class="badge">0</span></button></div><div class="search"><input id="search" placeholder="🔎  ¿Qué moño estás buscando?" oninput="renderProducts()"></div></div></header>  
+<main class="wrap">  
+<section id="home" class="view active">  
+<div class="hero"><div><div class="eyebrow" id="heroEyebrow">Nueva colección</div><h1 id="heroTitle">Colección de personajes</h1><p id="heroText">Detalles llenos de color para cada ocasión especial.</p><button class="btn" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">Ver colección →</button><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div></div></div>  
+<section class="section"><div class="secthead"><div><h2>Explora categorías</h2><p>Encuentra tu estilo favorito</p></div><button class="textbtn" onclick="showView('categories')">Ver todas</button></div><div class="cats" id="homeCats"></div></section>  
+<section class="section" id="productsSection"><div class="secthead"><div><h2>Productos destacados</h2><p>Diseñados con cariño 🎀</p></div></div><div class="filters" id="filters"></div><div class="products" id="products"></div></section>  
+<div class="banner section"><div><h3>Tu moño, tu estilo</h3><p>Personaliza colores y agrega un nombre.</p><button class="btn secondary" onclick="showView('products')" style="margin-top:10px">Descubrir diseños</button></div><div class="bow">🎀✨</div></div>  
+</section>  
+<section id="categories" class="view"><div class="section"><div class="secthead"><div><h2>Todas las categorías</h2><p>Elige una para ver los diseños</p></div></div><div class="cats" id="allCats"></div></div></section>  
+<section id="products" class="view"><div class="section"><div class="secthead"><div><h2>Catálogo</h2><p>Agrega tus favoritos al carrito</p></div></div><div class="filters" id="filters2"></div><div class="products" id="products2"></div></div></section>  
+<section id="cart" class="view"><div class="section"><h2>🛍️ Tu carrito</h2><p class="muted">Revisa los moños antes de preparar tu pedido.</p><div class="panel" id="cartItems"></div><div class="panel"><label>Tu nombre<input id="customerName" class="field" placeholder="Nombre completo"></label><label>Teléfono de contacto<input id="customerPhone" class="field" inputmode="tel" placeholder="Tu número de teléfono"></label><label>Personalización o notas<textarea id="customerNotes" class="field" placeholder="Colores, nombres, indicaciones..." rows="3"></textarea></label><label>Entrega<select id="delivery" class="field"><option>Por confirmar</option><option>Entrega local</option><option>Envío por paquetería</option></select></label><div class="total"><span>Total estimado</span><span id="cartTotal">$0 MXN</span></div><button class="btn" style="width:100%" onclick="checkout()">💬 Preparar pedido por WhatsApp</button><p class="muted">Se abrirá WhatsApp con el resumen. El pedido solo queda enviado cuando tú mandas el mensaje.</p></div></section>  
+<section id="account" class="view"><div class="section"><h2>Mi cuenta</h2><div class="panel"><h3 id="authHeading">Crear cuenta o iniciar sesión</h3><p class="muted" id="authStatus">Regístrate para guardar tus datos y consultar tus pedidos.</p><label>Nombre completo<input id="accountName" class="field" autocomplete="name" placeholder="Tu nombre"></label><label>Teléfono<input id="accountPhone" class="field" inputmode="tel" placeholder="Tu número de contacto"></label><label>Correo electrónico<input id="accountEmail" class="field" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"></label><label>Contraseña<input id="accountPassword" class="field" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></label><button class="btn" id="authMainBtn" style="width:100%" onclick="registerOrLogin()">Crear cuenta</button><button class="textbtn" id="authToggle" style="margin-top:12px" onclick="toggleAuthMode()">Ya tengo cuenta · Iniciar sesión</button><button class="btn secondary" id="logoutBtn" style="display:none;width:100%;margin-top:10px" onclick="logout()">Cerrar sesión</button></div><div class="panel"><h3>Mis pedidos</h3><div id="history"><p class="muted">Inicia sesión para consultar tu historial.</p></div></div></div></section>  
+<section id="menu" class="view"><div class="section"><h2>Menú</h2><div class="panel"><button class="textbtn" onclick="showView('home')">⌂ Inicio</button><hr style="border:0;border-top:1px solid var(--line)"><button class="textbtn" onclick="showView('categories')">🎀 Categorías</button><hr style="border:0;border-top:1px solid var(--line)"><button class="textbtn" onclick="showView('products')">🛍️ Catálogo</button><hr style="border:0;border-top:1px solid var(--line)"><button class="textbtn" onclick="showView('account')">👤 Mi cuenta e historial</button></div></div></section>  
+</main>  
+<nav class="bottomnav"><button class="navitem active" data-view="home" onclick="showView('home')"><span>⌂</span>Inicio</button><button class="navitem" data-view="categories" onclick="showView('categories')"><span>☷</span>Categorías</button><button class="navitem" data-view="cart" onclick="showView('cart')"><span>🛒</span>Carrito</button><button class="navitem" data-view="account" onclick="showView('account')"><span>♙</span>Cuenta</button></nav>  
+<div class="footer">Creaciones Yazmin · Diseños hechos con cariño<br>Precios e imágenes de muestra; reemplázalos por los productos reales.</div>  
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>  
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>  
+<script>  
+const firebaseConfig = {  
+  apiKey: "AIzaSyBvn_ML8ajShf9F002XuALsKJOgDZU0BoM",  
+  authDomain: "creaciones-yazmin-catalogo.firebaseapp.com",  
+  projectId: "creaciones-yazmin-catalogo",  
+  storageBucket: "creaciones-yazmin-catalogo.firebasestorage.app",  
+  messagingSenderId: "1076672530266",  
+  appId: "1:1076672530266:web:861949973812338dbcd563",  
+  measurementId: "G-Q3D435NMW4"  
+};  
+firebase.initializeApp(firebaseConfig);  
+const auth = firebase.auth();  
+const db = firebase.firestore();  
+const WHATSAPP_NUMBER='525644275718'; // WhatsApp de Creaciones Yazmin: México +52 y número de 10 dígitos  
+const cats=[['Todos','✨'],['Escolares','🎀'],['Personajes','🐭'],['Diademas','🌸'],['Personalizados','💗'],['Bebés','🧸'],['Temporada','🎃'],['Novedades','🌟'],['Ofertas','💝']];  
+const productsData=[  
+{id:1,name:'Moño Minnie',category:'Personajes',price:130,emoji:'🎀',desc:'Rojo y negro, lleno de encanto.',bg:'p2'},  
+{id:2,name:'Moño Arcoíris',category:'Escolares',price:125,emoji:'🌈',desc:'Colores alegres para todos los días.',bg:'p3'},  
+{id:3,name:'Moño Escolar Clásico',category:'Escolares',price:90,emoji:'💜',desc:'Un básico bonito y combinable.',bg:'p2'},  
+{id:4,name:'Moño Princesa',category:'Personajes',price:125,emoji:'👑',desc:'Un diseño especial para brillar.',bg:'p4'},  
+{id:5,name:'Diadema Floral',category:'Diademas',price:115,emoji:'🌸',desc:'Flores y tonos delicados.',bg:'p3'},  
+{id:6,name:'Moño Personalizado',category:'Personalizados',price:140,emoji:'🎀',desc:'Agrega un nombre y elige colores.',bg:''},  
+{id:7,name:'Moño Bebé',category:'Bebés',price:85,emoji:'🩷',desc:'Suave, dulce y delicado.',bg:'p4'},  
+{id:8,name:'Moño de Temporada',category:'Temporada',price:120,emoji:'🎃',desc:'Diseños para fechas especiales.',bg:'p3'}];  
+let selected='Todos',cart=JSON.parse(localStorage.getItem('cy_cart')||'[]'),slide=0;  
+const money=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);  
+function renderCats(){const html=cats.slice(1).map(([n,e])=>`<button class="cat" onclick="chooseCat('${n}')"><span class="emoji">${e}</span><b>${n}</b></button>`).join('');document.getElementById('homeCats').innerHTML=html;document.getElementById('allCats').innerHTML=`<button class="cat" onclick="chooseCat('Todos')"><span class="emoji">✨</span><b>Todos</b></button>`+html;}  
+function renderFilters(id){document.getElementById(id).innerHTML=cats.map(([n])=>`<button class="chip ${selected===n?'active':''}" onclick="chooseCat('${n}')">${n}</button>`).join('')}  
+function renderProducts(){const q=(document.getElementById('search')?.value||'').toLowerCase();let list=productsData.filter(p=>(selected==='Todos'||p.category===selected)&&(`${p.name} ${p.category} ${p.desc}`).toLowerCase().includes(q));const html=list.map(p=>`<article class="product"><div class="photo ${p.bg}">${p.emoji}<button class="heart" aria-label="Favorito" onclick="alert('Los favoritos se activarán al completar las cuentas.')">♡</button></div><div class="prodinfo"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><button class="add" onclick="addToCart(${p.id})">＋ Agregar</button></div></article>`).join('')||'<p class="muted">No encontramos productos en esta búsqueda.</p>';document.getElementById('products').innerHTML=html;document.getElementById('products2').innerHTML=html;renderFilters('filters');renderFilters('filters2')}  
+function chooseCat(c){selected=c;renderProducts();showView('products');window.scrollTo({top:0,behavior:'smooth'})}  
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.navitem').forEach(v=>v.classList.toggle('active',v.dataset.view===id));if(id==='cart')renderCart();window.scrollTo({top:0,behavior:'smooth'})}  
+function addToCart(id){const p=productsData.find(x=>x.id===id),found=cart.find(x=>x.id===id);if(found)found.qty++;else cart.push({...p,qty:1});saveCart();renderCart();const count=document.getElementById('cartCount');count.textContent=cart.reduce((s,x)=>s+x.qty,0);}  
+function saveCart(){localStorage.setItem('cy_cart',JSON.stringify(cart));document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0)}  
+function changeQty(id,d){const item=cart.find(x=>x.id===id);if(item)item.qty+=d;cart=cart.filter(x=>x.qty>0);saveCart();renderCart()}  
+function renderCart(){const el=document.getElementById('cartItems');if(!cart.length){el.innerHTML='<p>Tu carrito está vacío 🎀</p><button class="btn secondary" onclick="showView(\'products\')">Ver catálogo</button>'}else{el.innerHTML=cart.map(p=>`<div class="cartrow"><div class="mini">${p.emoji}</div><div class="grow"><b>${p.name}</b><div class="muted">${money(p.price)} c/u</div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button>${p.qty}<button onclick="changeQty(${p.id},1)">＋</button></div></div><b>${money(p.price*p.qty)}</b></div>`).join('')}document.getElementById('cartTotal').textContent=money(cart.reduce((s,p)=>s+p.price*p.qty,0))}  
+async function checkout(){if(!cart.length){alert('Agrega al menos un producto al carrito.');return}const user=auth.currentUser;if(!user){alert('Primero crea tu cuenta o inicia sesión en Mi cuenta para guardar el pedido y su historial.');showView('account');return}const name=(document.getElementById('customerName').value.trim()||document.getElementById('accountName').value.trim()),phone=(document.getElementById('customerPhone').value.trim()||document.getElementById('accountPhone').value.trim()),notes=document.getElementById('customerNotes').value.trim(),delivery=document.getElementById('delivery').value;if(!name||!phone){alert('Escribe tu nombre y teléfono de contacto en el carrito o en Mi cuenta.');return}const total=cart.reduce((s,p)=>s+p.price*p.qty,0);const items=cart.map(p=>({productId:p.id,name:p.name,price:p.price,quantity:p.qty,subtotal:p.price*p.qty}));let msg=`🌸 *NUEVO PEDIDO — CREACIONES YAZMIN*\n\n*Cliente:* ${name}\n*Teléfono:* ${phone}\n*Correo:* ${user.email||'No indicado'}\n\n*Productos:*\n${cart.map(p=>`• ${p.name} x${p.qty} — ${money(p.price*p.qty)}`).join('\n')}\n\n*Total estimado:* ${money(total)}\n*Entrega:* ${delivery}\n*Notas:* ${notes||'Sin notas'}\n*Pedido guardado en el historial de la web.*\n\nPor favor, confirmar disponibilidad y entrega.`;try{await db.collection('pedidos').add({clienteId:user.uid,clienteNombre:name,telefono:phone,correo:user.email||'',productos:items,total,entrega:delivery,notas:notes,estado:'pendiente',creadoEn:firebase.firestore.FieldValue.serverTimestamp()});await db.collection('clientes').doc(user.uid).set({nombre:name,telefono:phone,correo:user.email||'',actualizadoEn:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});alert('¡Pedido guardado en tu historial! Ahora se abrirá WhatsApp para enviarlo. Recuerda pulsar Enviar en WhatsApp.');if(!WHATSAPP_NUMBER){alert('Falta configurar el número de WhatsApp en el archivo. El pedido sí quedó guardado en tu historial.');return}window.location.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;cart=[];saveCart();renderCart();loadHistory()}catch(e){console.error(e);alert('No pudimos guardar el pedido. Revisa tu conexión y las reglas de Firestore; no se abrió WhatsApp para evitar perder el pedido.')}}  
+let authMode='register';function toggleAuthMode(){authMode=authMode==='register'?'login':'register';document.getElementById('authHeading').textContent=authMode==='register'?'Crear cuenta':'Iniciar sesión';document.getElementById('authMainBtn').textContent=authMode==='register'?'Crear cuenta':'Iniciar sesión';document.getElementById('authToggle').textContent=authMode==='register'?'Ya tengo cuenta · Iniciar sesión':'Soy nuevo · Crear cuenta';document.getElementById('accountName').parentElement.style.display=authMode==='register'?'block':'none';document.getElementById('accountPhone').parentElement.style.display=authMode==='register'?'block':'none'}  
+async function registerOrLogin(){const email=document.getElementById('accountEmail').value.trim(),password=document.getElementById('accountPassword').value,name=document.getElementById('accountName').value.trim(),phone=document.getElementById('accountPhone').value.trim();if(!email||password.length<6){alert('Escribe tu correo y una contraseña de al menos 6 caracteres.');return}try{let credential;if(authMode==='register'){if(!name||!phone){alert('Completa tu nombre y teléfono.');return}credential=await auth.createUserWithEmailAndPassword(email,password);await db.collection('clientes').doc(credential.user.uid).set({nombre:name,telefono:phone,correo:email,creadoEn:firebase.firestore.FieldValue.serverTimestamp()});}else{credential=await auth.signInWithEmailAndPassword(email,password)}document.getElementById('authStatus').textContent='Sesión iniciada: '+email;document.getElementById('logoutBtn').style.display='block';alert(authMode==='register'?'¡Cuenta creada!':'¡Bienvenido de nuevo!');loadHistory()}catch(e){alert('No se pudo completar: '+(e.message||'revisa los datos y la configuración de Firebase Authentication.'))}}  
+async function logout(){await auth.signOut();document.getElementById('authStatus').textContent='Sesión cerrada.';document.getElementById('logoutBtn').style.display='none';document.getElementById('history').innerHTML='<p class="muted">Inicia sesión para consultar tu historial.</p>'}  
+auth.onAuthStateChanged(user=>{if(user){document.getElementById('authStatus').textContent='Sesión iniciada: '+user.email;document.getElementById('logoutBtn').style.display='block';document.getElementById('authMainBtn').style.display='none';document.getElementById('authToggle').style.display='none';loadHistory();db.collection('clientes').doc(user.uid).get().then(doc=>{if(doc.exists){const d=doc.data();document.getElementById('accountName').value=d.nombre||'';document.getElementById('accountPhone').value=d.telefono||'';document.getElementById('customerName').value=d.nombre||'';document.getElementById('customerPhone').value=d.telefono||''}})}else{document.getElementById('authMainBtn').style.display='block';document.getElementById('authToggle').style.display='inline-block'}});  
+async function loadHistory(){const user=auth.currentUser,el=document.getElementById('history');if(!user){el.innerHTML='<p class="muted">Inicia sesión para consultar tu historial.</p>';return}el.innerHTML='<p class="muted">Cargando pedidos…</p>';try{const snap=await db.collection('pedidos').where('clienteId','==',user.uid).get();if(snap.empty){el.innerHTML='<p class="muted">Todavía no tienes pedidos.</p>';return}const orders=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.creadoEn?.seconds||0)-(a.creadoEn?.seconds||0));el.innerHTML=orders.map(o=>`<div class="orderrow"><div class="mini">🎀</div><div class="grow"><b>Pedido ${o.id.slice(0,7).toUpperCase()}</b><div class="muted">${(o.productos||[]).map(p=>`${p.name} ×${p.quantity}`).join(', ')}</div><div class="muted">Estado: ${o.estado||'pendiente'}</div></div><b>${money(o.total||0)}</b></div>`).join('')}catch(e){console.error(e);el.innerHTML='<p class="muted">No se pudo cargar el historial. Revisa las reglas de Firestore.</p>'}}  const slides=[['Nueva colección','Colección de personajes','Detalles llenos de color para cada ocasión especial.','🎀'],['Diseños personalizados','Tu moño, tu estilo','Agrega nombres, combina colores y crea un detalle único.','💝'],['Hechos con cariño','Pequeños detalles, grandes sonrisas','Descubre diseños para regalar y celebrar.','🌸']];function nextSlide(){slide=(slide+1)%slides.length;const s=slides[slide];document.getElementById('heroEyebrow').textContent=s[0];document.getElementById('heroTitle').textContent=s[1];document.getElementById('heroText').textContent=s[2];document.querySelector('.hero').style.setProperty('--unused','');document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===slide))}setInterval(nextSlide,5500);renderCats();renderProducts();saveCart();renderCart();
+</script></body></html>
