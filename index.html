@@ -113,7 +113,7 @@ button{cursor:pointer}
       <div class="secthead"><div><h2>Productos destacados</h2><p>Diseñados con cariño 🎀</p></div></div>
       <div class="filters" id="filters"></div><div class="products" id="products"></div>
     </section>
-    <div class="banner section"><div><h3>Tu moño, tu estilo</h3><p>Personaliza colores y agrega un nombre.</p><button class="btn secondary" onclick="showView('products')" style="margin-top:10px">Descubrir diseños</button></div><div class="bow">🎀✨</div></div>
+    <div class="banner section"><div><h3>Tu moño, tu estilo</h3><p>Personaliza colores y agrega un nombre.</p><button class="btn secondary" onclick="showView('catalogView')" style="margin-top:10px">Descubrir diseños</button></div><div class="bow">🎀✨</div></div>
   </section>
 
   <section id="categories" class="view">
@@ -185,7 +185,7 @@ button{cursor:pointer}
     <div class="section"><h2>Menú</h2><div class="panel">
       <button class="textbtn" onclick="showView('home')">⌂ Inicio</button><hr style="border:0;border-top:1px solid var(--line)">
       <button class="textbtn" onclick="showView('categories')">🎀 Categorías</button><hr style="border:0;border-top:1px solid var(--line)">
-      <button class="textbtn" onclick="showView('products')">🛍️ Catálogo</button><hr style="border:0;border-top:1px solid var(--line)">
+      <button class="textbtn" onclick="showView('catalogView')">🛍️ Catálogo</button><hr style="border:0;border-top:1px solid var(--line)">
       <button class="textbtn" onclick="showView('account')">👤 Mi perfil e historial</button>
     </div></div>
   </section>
@@ -252,7 +252,7 @@ function renderProducts(){
   renderFilters('filters');
   renderFilters('filters2');
 }
-function chooseCat(c){selected=c;renderProducts();showView('products');window.scrollTo({top:0,behavior:'smooth'});}
+function chooseCat(c){selected=c;renderProducts();showView('catalogView');window.scrollTo({top:0,behavior:'smooth'});}
 function showView(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
   document.querySelectorAll('.navitem').forEach(v=>v.classList.toggle('active',v.dataset.view===id));
@@ -278,7 +278,7 @@ function changeQty(id,d){
 function renderCart(){
   const el=document.getElementById('cartItems');
   if(!cart.length){
-    el.innerHTML='<p>Tu carrito está vacío 🎀</p><button class="btn secondary" onclick="showView(\\'products\\')">Ver catálogo</button>';
+    el.innerHTML='<p>Tu carrito está vacío 🎀</p><button class="btn secondary" onclick="showView('catalogView')">Ver catálogo</button>';
   }else{
     el.innerHTML=cart.map(p=>`<div class="cartrow"><div class="mini">${p.emoji}</div><div class="grow"><b>${p.name}</b><div class="muted">${money(p.price)} c/u</div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button>${p.qty}<button onclick="changeQty(${p.id},1)">＋</button></div></div><b>${money(p.price*p.qty)}</b></div>`).join('');
   }
